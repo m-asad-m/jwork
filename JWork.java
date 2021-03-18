@@ -1,9 +1,3 @@
-/**
- * class JWork.
- *
- * @author Muhammad As'ad Muyassir
- * @version 18-03-2021
- */
 public class JWork
 {
     public static void main(String[] args)
