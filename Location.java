@@ -1,5 +1,5 @@
 /**
- * Class Location adalah class yang menyimpan lokasi recruiter
+ * Class Location adalah class yang menyimpan lokasi pemilik pekerjaan(Recruiter).
  *
  * @author Muhammad As'ad Muyassir
  * @version 18-03-2021
@@ -9,7 +9,10 @@ public class Location
     private String province, city, description;
     
     /**
-     * Constructor for objects of class Location
+     * Constructor untuk objek dari class Location
+     * @param province    nama provinsi
+     * @param city        nama kota
+     * @param description deskripsi lokasi
      */
     public Location(String province, String city, String description)
     {
@@ -19,8 +22,8 @@ public class Location
     }
     
     /**
-     * metode get province untuk mendapatkan nilai provinsi
-     * @return province nilai provinsi dari objek
+     * metode untuk mendapatkan nama provinsi
+     * @return nama provinsi dari objek
      */
     public String getProvince()
     {
@@ -28,8 +31,8 @@ public class Location
     }
     
     /**
-     * metode get city untuk mendapatkan nilai kota
-     * @return city nilai kota dari objek
+     * metode untuk mendapatkan nama kota
+     * @return nama kota dari objek
      */
     public String getCity()
     {
@@ -37,8 +40,8 @@ public class Location
     }
     
     /**
-     * metode get description untuk mendapatkan deskripsi dari lokasi
-     * @return deskripsi nilai deskripsi dari objek
+     * metode untuk mendapatkan deskripsi dari lokasi
+     * @return deskripsi dari objek
      */
     public String getDescription()
     {
@@ -46,8 +49,8 @@ public class Location
     }
     
     /**
-     * metode set province untuk mengubah provinsi dari lokasi
-     * @param province nilai provinsi yang diinginkan
+     * metode untuk mengubah nama provinsi dari lokasi
+     * @param province nama provinsi
      */
     public void setProvince(String province)
     {
@@ -55,8 +58,8 @@ public class Location
     }
     
     /**
-     * metode set city untuk mengubah kota dari lokasi
-     * @param city nilai kota yang diinginkan
+     * metode untuk mengubah nama kota dari lokasi
+     * @param city nama kota
      */
     public void setCity(String city)
     {
@@ -64,15 +67,15 @@ public class Location
     }
     
     /**
-     * metode set description untuk mengubah deskripsi dari lokasi
-     * @param description nilai deskripsi yang diinginkan
+     * metode untuk mengubah deskripsi dari lokasi
+     * @param description deskripsi lokasi
      */
     public void setDescription(String description)
     {
         this.description = description;
     }
     
-    /** untuk melakukan print data provinsi */
+    /** metode untuk melakukan print data provinsi pada terminal */
     public void printData()
     {
         System.out.println(province);

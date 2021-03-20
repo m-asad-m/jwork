@@ -1,5 +1,5 @@
 /**
- * class Job.
+ * Class Job adalah class yang menyimpan data pekerjaan.
  *
  * @author Muhammad As'ad Muyassir
  * @version 18-03-2021
@@ -11,7 +11,12 @@ public class Job
     Recruiter recruiter;
 
     /**
-     * Constructor for objects of class Invoice
+     * Constructor untuk objek dari class Job
+     * @param id        id pekerjaan
+     * @param name      nama pekerjaan
+     * @param recruiter objek pemilik pekerjaan(Recruiter)
+     * @param fee       bayaran pekerjaan
+     * @param category  kategori pekerjaan
      */
     public Job(int id, String name, Recruiter recruiter, int fee, String category)
     {
@@ -23,8 +28,8 @@ public class Job
     }
     
     /**
-     * get id method
-     * @return id of job
+     * metode untuk mendapatkan id dari pekerjaan
+     * @return id pekerjaan
      */
     public int getId()
     {
@@ -32,8 +37,8 @@ public class Job
     }
     
     /**
-     * get name method
-     * @return name of job
+     * metode untuk mendapatkan nama dari pekerjaan
+     * @return nama pekerjaan
      */
     public String getName()
     {
@@ -41,8 +46,8 @@ public class Job
     }
     
     /**
-     * get fee method
-     * @return fee of job
+     * metode untuk mendapatkan nilai bayaran dari pekerjaan
+     * @return nilai bayaran
      */
     public int getFee()
     {
@@ -50,8 +55,8 @@ public class Job
     }
     
     /**
-     * get category method
-     * @return category of job
+     * metode untuk mendapatkan kategori pekerjaan
+     * @return kategori pekerjaan
      */
     public String getCategory()
     {
@@ -59,8 +64,8 @@ public class Job
     }
     
     /**
-     * get recruited method
-     * @return recruiter object of job
+     * metode untuk mendapatkan objek pemilik pekerjaan
+     * @return objek pemilik pekerjaan
      */
     public Recruiter getRecruiter()
     {
@@ -68,8 +73,8 @@ public class Job
     }
     
     /**
-     * set id method
-     * @param id an parameter for job id
+     * metode untuk mengubah id pekerjaan
+     * @param id id pekerjaan
      */
     public void setId(int id)
     {
@@ -77,8 +82,8 @@ public class Job
     }
     
     /**
-     * set name method
-     * @param name an parameter for job name
+     * metode untuk mengubah nama pekerjaan
+     * @param name nama pekerjaan
      */
     public void setName(String name)
     {
@@ -86,8 +91,8 @@ public class Job
     }
     
     /**
-     * set fee method
-     * @param fee an parameter for job fee
+     * metode untuk mengubah nilai bayaran pekerjaan
+     * @param fee nilai bayaran
      */
     public void setFee(int fee)
     {
@@ -95,25 +100,25 @@ public class Job
     }
     
     /**
-     * set category method
-     * @param category an parameter for job category
+     * metode untuk mengubah kategori pekerjaan
+     * @param category kategori pekerjaan
      */
     public void setCategory(String category){
         this.category = category;
     }
     
     /**
-     * set category method
-     * @param recruiter an parameter for job recruiter object
+     * metode untuk mengubah pemilik pekerjaan
+     * @param recruiter objek pemilik pekerjaan
      */
     public void setRecruiter(Recruiter recruiter)
     {
         this.recruiter = recruiter;
     }
     
-    /** print data method */
+    /** metode untuk melakukan print data pada terminal */
     public void printData()
     {
-        
+        System.out.println(name);
     }
 }

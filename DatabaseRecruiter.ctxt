@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=DatabaseRecruiter
+comment0.text=\r\n\ Class\ DatabaseRecruiter.\r\n\r\n\ @author\ Muhammad\ As'ad\ Muyassir\r\n\ @version\ 20-03-2021\r\n
+comment1.params=
+comment1.target=DatabaseRecruiter()
+comment1.text=\r\n\ Constructor\ untuk\ objek\ dari\ class\ DatabaseRecruiter\r\n
+comment2.params=recruiter
+comment2.target=boolean\ addRecruiter(Recruiter)
+comment2.text=\r\n\ metode\ untuk\ menambahkan\ pekerjaan\ ke\ list\r\n\ @param\ Recruiter\ objek\ Recruiter\r\n\ @return\ \ \ \ \ \ \ \ \ \ boolean\r\n
+comment3.params=recruiter
+comment3.target=boolean\ removeRecruiter(Recruiter)
+comment3.text=\r\n\ metode\ untuk\ menghapus\ pekerjaan\ dari\ list\r\n\ @param\ Recruiter\ objek\ Recruiter\r\n\ @return\ \ \ \ \ \ \ \ \ \ boolean\r\n
+comment4.params=
+comment4.target=Recruiter\ getRecruiter()
+comment4.text=\r\n\ metode\ untuk\ mendapatkan\ list\ Recruiter\r\n\ @return\ objek\ Recruiter\r\n
+comment5.params=
+comment5.target=java.lang.String[]\ getListRecruiter()
+comment5.text=metode\ untuk\ melakukan\ print\ list\ Recruiter\ pada\ terminal
+numComments=6
