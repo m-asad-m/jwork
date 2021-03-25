@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=PaymentType
+comment0.text=\r\n\ Enumeration\ class\ PaymentType\r\n\r\n\ @author\ Muhammad\ As'ad\ Muyassir\r\n\ @version\ 25-03-2021\r\n
+comment1.params=
+comment1.target=java.lang.String\ toString()
+numComments=2

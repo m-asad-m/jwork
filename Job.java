@@ -2,12 +2,13 @@
  * Class Job adalah class yang menyimpan data pekerjaan.
  *
  * @author Muhammad As'ad Muyassir
- * @version 18-03-2021
+ * @version 25-03-2021
  */
 public class Job
 {
     private int id, fee;
-    private String name, category;
+    private String name;
+    JobCategory category;
     Recruiter recruiter;
 
     /**
@@ -18,7 +19,7 @@ public class Job
      * @param fee       bayaran pekerjaan
      * @param category  kategori pekerjaan
      */
-    public Job(int id, String name, Recruiter recruiter, int fee, String category)
+    public Job(int id, String name, Recruiter recruiter, int fee, JobCategory category)
     {
         this.id = id;
         this.name = name;
@@ -58,7 +59,7 @@ public class Job
      * metode untuk mendapatkan kategori pekerjaan
      * @return kategori pekerjaan
      */
-    public String getCategory()
+    public JobCategory getCategory()
     {
         return category;
     }
@@ -103,7 +104,7 @@ public class Job
      * metode untuk mengubah kategori pekerjaan
      * @param category kategori pekerjaan
      */
-    public void setCategory(String category){
+    public void setCategory(JobCategory category){
         this.category = category;
     }
     
@@ -119,6 +120,12 @@ public class Job
     /** metode untuk melakukan print data pada terminal */
     public void printData()
     {
-        System.out.println(name);
+        System.out.println("===================== JOB =====================");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Recruiter: " + recruiter.getName());
+        System.out.println("City: " + recruiter.getLocation().getCity());
+        System.out.println("Fee: " + fee);
+        System.out.println("Category: " + category.toString());
     }
 }

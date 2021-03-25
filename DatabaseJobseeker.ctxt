@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=DatabaseJobseeker
+comment0.text=\r\n\ Class\ DatabaseJobseekerseeker.\r\n\r\n\ @author\ Muhammad\ As'ad\ Muyassir\r\n\ @version\ 25-03-2021\r\n
+comment1.params=jobseeker
+comment1.target=boolean\ addJobseeker(Jobseeker)
+comment1.text=\r\n\ metode\ untuk\ menambahkan\ pekerjaan\ ke\ list\r\n\ @param\ Jobseeker\ objek\ Jobseeker\r\n\ @return\ \ \ \ \ \ \ \ \ \ boolean\r\n
+comment2.params=jobseeker
+comment2.target=boolean\ removeJobseeker(Jobseeker)
+comment2.text=\r\n\ metode\ untuk\ menghapus\ pekerjaan\ dari\ list\r\n\ @param\ Jobseeker\ objek\ Jobseeker\r\n\ @return\ \ \ \ \ \ \ \ \ \ boolean\r\n
+comment3.params=
+comment3.target=Jobseeker\ getJobseeker()
+comment3.text=\r\n\ metode\ untuk\ mendapatkan\ list\ Jobseeker\r\n\ @return\ objek\ Jobseeker\r\n
+comment4.params=
+comment4.target=java.lang.String[]\ getListJobseeker()
+comment4.text=metode\ untuk\ melakukan\ print\ list\ Jobseeker\ pada\ terminal
+numComments=5

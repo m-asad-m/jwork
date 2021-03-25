@@ -2,26 +2,18 @@
  * Class DatabaseRecruiter.
  *
  * @author Muhammad As'ad Muyassir
- * @version 20-03-2021
+ * @version 25-03-2021
  */
 public class DatabaseRecruiter
 {
-    String[] listRecruiter;
-
-    /**
-     * Constructor untuk objek dari class DatabaseRecruiter
-     */
-    public DatabaseRecruiter()
-    {
-        
-    }
+    static String[] listRecruiter;
 
     /**
      * metode untuk menambahkan pekerjaan ke list
      * @param Recruiter objek Recruiter
      * @return          boolean
      */
-    public boolean addRecruiter(Recruiter recruiter)
+    public static boolean addRecruiter(Recruiter recruiter)
     {
         return false;
     }
@@ -31,7 +23,7 @@ public class DatabaseRecruiter
      * @param Recruiter objek Recruiter
      * @return          boolean
      */
-    public boolean removeRecruiter(Recruiter recruiter)
+    public static boolean removeRecruiter(Recruiter recruiter)
     {
         return false;
     }
@@ -40,13 +32,13 @@ public class DatabaseRecruiter
      * metode untuk mendapatkan list Recruiter
      * @return objek Recruiter
      */
-    public Recruiter getRecruiter()
+    public static Recruiter getRecruiter()
     {
         return null;
     }
     
     /** metode untuk melakukan print list Recruiter pada terminal */
-    public String[] getListRecruiter()
+    public static String[] getListRecruiter()
     {
         return null;
     }
