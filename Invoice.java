@@ -2,29 +2,35 @@
  * Class Invoice adalah class yang menyimpan data invoice.
  *
  * @author Muhammad As'ad Muyassir
- * @version 18-03-2021
+ * @version 27-03-2021
  */
 public class Invoice
 {
-    private int id, idJob, totalFee;
+    private int id, idJob, totalFee, totalPrice;
     private String date;
     Jobseeker jobseeker;
+    PaymentType paymentType;
+    InvoiceStatus status;
 
     /**
      * Constructor untuk objek dari class Invoice
-     * @param id        id invoice
-     * @param idJob     id pekerjaan
-     * @param date      tanggal invoice dibuat
-     * @param totalFee  total bayaran pada invoice
-     * @param jobseeker objek pekerja
+     * @param id          id invoice
+     * @param idJob       id pekerjaan
+     * @param date        tanggal invoice dibuat
+     * @param totalFee    total bayaran pada invoice
+     * @param jobseeker   objek pekerja
+     * @param paymentType objek tipe pembayaran
+     * @param status      objek status invoice
      */
-    public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker)
+    public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker, PaymentType paymentType, InvoiceStatus status)
     {
         this.id = id;
         this.idJob = idJob;
         this.date = date;
         this.totalFee = totalFee;
+        this.paymentType = paymentType;
         this.jobseeker = jobseeker;
+        this.status = status;
     }
     
     /**
@@ -73,6 +79,24 @@ public class Invoice
     }
     
     /**
+     * metode untuk mendapatkan data tipe pembayaran
+     * @return objek tipe pembayaran
+     */
+    public PaymentType getPaymentType()
+    {
+        return paymentType;
+    }
+    
+    /**
+     * metode untuk mendapatkan data status invoice
+     * @return objek status invoice
+     */
+    public InvoiceStatus getInvoiceStatus()
+    {
+        return status;
+    }
+    
+    /**
      * metode untuk mengubah id invoice
      * @param id id invoice
      */
@@ -117,9 +141,33 @@ public class Invoice
         this.jobseeker = jobseeker;
     }
     
+    /**
+     * metode untuk mengubah data tipe pembayaran
+     * @param paymentType objek tipe pembayaran
+     */
+    public void setJobseeker(PaymentType paymentType)
+    {
+        this.paymentType = paymentType;
+    }
+    
+    /**
+     * metode untuk mengubah data status invoice
+     * @param status objek status invoice
+     */
+    public void setInvoiceStatus(InvoiceStatus status)
+    {
+        this.status = status;
+    }
+    
     /** metode untuk melakukan print data pada terminal */
     public void printData()
     {
-        System.out.println(totalFee);
+        System.out.println("===================== INVOICE =====================");
+        System.out.println("ID: " + id);
+        System.out.println("ID Job: " + idJob);
+        System.out.println("Date: " + date);
+        System.out.println("Seeker: " + jobseeker.getName());
+        System.out.println("Fee: " + totalFee);
+        System.out.println("Status: " + status.toString());
     }
 }
