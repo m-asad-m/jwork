@@ -2,7 +2,7 @@
  * Class Jobseeker adalah class yang menyimpan data pencari pekerjaan.
  *
  * @author Muhammad As'ad Muyassir
- * @version 18-03-2021
+ * @version 01-04-2021
  */
 public class Jobseeker
 {

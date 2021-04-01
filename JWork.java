@@ -6,12 +6,18 @@ public class JWork
         Recruiter recruiter = new Recruiter(1, "As'ad", "muhammad.asad@ui.ac.id", "0895333889470", location);
         Job job = new Job(1, "Senior Designer", recruiter, 10000000, JobCategory.WebDeveloper);
         Jobseeker jobseeker = new Jobseeker(1, "bambang", "bambang@gmail.com", "123123", "30-02-1985");
-        Invoice invoice = new Invoice(123123, job.getId(), "18-03-2021", job.getFee(), jobseeker, PaymentType.BankPayment, InvoiceStatus.Finished);
+        Bonus bonus0 = new Bonus(1, "abcdefg", 10000, 10000, true);
+        Bonus bonus1 = new Bonus(2, "hijklmn", 10000, 20000000, true);
+        EwalletPayment epay0 = new EwalletPayment(1, job, "01-04-2021", jobseeker, InvoiceStatus.OnGoing);
+        EwalletPayment epay1 = new EwalletPayment(2, job, "01-04-2021", jobseeker, bonus0, InvoiceStatus.OnGoing);
+        EwalletPayment epay2 = new EwalletPayment(3, job, "01-04-2021", jobseeker, bonus1, InvoiceStatus.OnGoing);
         
-        System.out.println(recruiter.getName());
-        recruiter.setName("Hansaka Wijaya");
-        System.out.println(recruiter.getName());
-        job.printData();
-        invoice.printData();
+        epay0.setTotalFee();
+        epay1.setTotalFee();
+        epay2.setTotalFee();
+        
+        epay0.printData();
+        epay1.printData();
+        epay2.printData();
     }
 }

@@ -2,13 +2,13 @@
  * Class Recruiter adalah class yang menyimpan data recruiter.
  *
  * @author Muhammad As'ad Muyassir
- * @version 18-03-2021
+ * @version 01-04-2021
  */
 public class Recruiter
 {
     private int id;
     private String name, email, phoneNumber;
-    Location location;
+    private Location location;
 
     /**
      * Constructor untuk objek dari class Recruiter

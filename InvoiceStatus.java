@@ -1,9 +1,8 @@
-
 /**
  * Enumeration class InvoiceStatus - write a description of the enum class here
  *
  * @author Muhammad As'ad Muyassir
- * @version 27-03-2021
+ * @version 01-04-2021
  */
 public enum InvoiceStatus
 {

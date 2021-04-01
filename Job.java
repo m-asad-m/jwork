@@ -2,14 +2,14 @@
  * Class Job adalah class yang menyimpan data pekerjaan.
  *
  * @author Muhammad As'ad Muyassir
- * @version 25-03-2021
+ * @version 01-04-2021
  */
 public class Job
 {
     private int id, fee;
     private String name;
-    JobCategory category;
-    Recruiter recruiter;
+    private JobCategory category;
+    private Recruiter recruiter;
 
     /**
      * Constructor untuk objek dari class Job

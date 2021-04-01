@@ -2,35 +2,33 @@
  * Class Invoice adalah class yang menyimpan data invoice.
  *
  * @author Muhammad As'ad Muyassir
- * @version 27-03-2021
+ * @version 01-04-2021
  */
-public class Invoice
+public abstract class Invoice
 {
-    private int id, idJob, totalFee, totalPrice;
+    private int id;
+    private Job job;
     private String date;
-    Jobseeker jobseeker;
-    PaymentType paymentType;
-    InvoiceStatus status;
+    protected int totalFee;
+    private Jobseeker jobseeker;
+    private InvoiceStatus invoiceStatus;
 
     /**
      * Constructor untuk objek dari class Invoice
-     * @param id          id invoice
-     * @param idJob       id pekerjaan
-     * @param date        tanggal invoice dibuat
-     * @param totalFee    total bayaran pada invoice
-     * @param jobseeker   objek pekerja
-     * @param paymentType objek tipe pembayaran
-     * @param status      objek status invoice
+     * @param id            id invoice
+     * @param job           objek pekerjaan
+     * @param date          tanggal invoice dibuat
+     * @param jobseeker     objek pekerja
+     * @param paymentType   objek tipe pembayaran
+     * @param invoiceStatus objek status invoice
      */
-    public Invoice(int id, int idJob, String date, int totalFee, Jobseeker jobseeker, PaymentType paymentType, InvoiceStatus status)
+    public Invoice(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
         this.id = id;
-        this.idJob = idJob;
+        this.job = job;
         this.date = date;
-        this.totalFee = totalFee;
-        this.paymentType = paymentType;
         this.jobseeker = jobseeker;
-        this.status = status;
+        this.invoiceStatus = invoiceStatus;
     }
     
     /**
@@ -46,9 +44,9 @@ public class Invoice
      * metode untuk mendapatkan id pekerjaan
      * @return id pekerjaan
      */
-    public int getIdJob()
+    public Job getJob()
     {
-        return idJob;
+        return job;
     }
     
     /**
@@ -82,10 +80,7 @@ public class Invoice
      * metode untuk mendapatkan data tipe pembayaran
      * @return objek tipe pembayaran
      */
-    public PaymentType getPaymentType()
-    {
-        return paymentType;
-    }
+    public abstract PaymentType getPaymentType();
     
     /**
      * metode untuk mendapatkan data status invoice
@@ -93,7 +88,7 @@ public class Invoice
      */
     public InvoiceStatus getInvoiceStatus()
     {
-        return status;
+        return invoiceStatus;
     }
     
     /**
@@ -109,9 +104,9 @@ public class Invoice
      * metode untuk mengubah id pekerjaan
      * @param id id pekerjaan
      */
-    public void setIdJob(int idJob)
+    public void setJob(Job job)
     {
-        this.idJob = idJob;
+        this.job = job;
     }
     
     /**
@@ -127,10 +122,7 @@ public class Invoice
      * metode untuk mengubah total bayaran
      * @param totalFee total bayaran
      */
-    public void setTotalFee(int totalFee)
-    {
-        this.totalFee = totalFee;
-    }
+    public abstract void setTotalFee();
     
     /**
      * metode untuk mengubah data pekerja
@@ -142,32 +134,14 @@ public class Invoice
     }
     
     /**
-     * metode untuk mengubah data tipe pembayaran
-     * @param paymentType objek tipe pembayaran
-     */
-    public void setJobseeker(PaymentType paymentType)
-    {
-        this.paymentType = paymentType;
-    }
-    
-    /**
      * metode untuk mengubah data status invoice
      * @param status objek status invoice
      */
     public void setInvoiceStatus(InvoiceStatus status)
     {
-        this.status = status;
+        this.invoiceStatus = invoiceStatus;
     }
     
     /** metode untuk melakukan print data pada terminal */
-    public void printData()
-    {
-        System.out.println("===================== INVOICE =====================");
-        System.out.println("ID: " + id);
-        System.out.println("ID Job: " + idJob);
-        System.out.println("Date: " + date);
-        System.out.println("Seeker: " + jobseeker.getName());
-        System.out.println("Fee: " + totalFee);
-        System.out.println("Status: " + status.toString());
-    }
+    public abstract void printData();
 }

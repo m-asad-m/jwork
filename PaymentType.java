@@ -2,7 +2,7 @@
  * Enumeration class PaymentType
  *
  * @author Muhammad As'ad Muyassir
- * @version 25-03-2021
+ * @version 01-04-2021
  */
 public enum PaymentType
 {

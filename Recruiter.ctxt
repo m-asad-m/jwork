@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Recruiter
-comment0.text=\r\n\ Class\ Recruiter\ adalah\ class\ yang\ menyimpan\ data\ recruiter.\r\n\r\n\ @author\ Muhammad\ As'ad\ Muyassir\r\n\ @version\ 18-03-2021\r\n
+comment0.text=\r\n\ Class\ Recruiter\ adalah\ class\ yang\ menyimpan\ data\ recruiter.\r\n\r\n\ @author\ Muhammad\ As'ad\ Muyassir\r\n\ @version\ 01-04-2021\r\n
 comment1.params=id\ name\ email\ phoneNumber\ location
 comment1.target=Recruiter(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ Location)
 comment1.text=\r\n\ Constructor\ untuk\ objek\ dari\ class\ Recruiter\r\n\ @param\ id\ \ \ \ \ \ \ \ \ \ id\ recruiter\r\n\ @param\ name\ \ \ \ \ \ \ \ nama\ recruiter\r\n\ @param\ email\ \ \ \ \ \ \ email\ recruiter\r\n\ @param\ phoneNumber\ nomor\ telepon\ recruiter\r\n\ @param\ location\ \ \ \ lokasi\ recruiter\r\n

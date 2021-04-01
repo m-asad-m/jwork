@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Job
-comment0.text=\r\n\ Class\ Job\ adalah\ class\ yang\ menyimpan\ data\ pekerjaan.\r\n\r\n\ @author\ Muhammad\ As'ad\ Muyassir\r\n\ @version\ 25-03-2021\r\n
+comment0.text=\r\n\ Class\ Job\ adalah\ class\ yang\ menyimpan\ data\ pekerjaan.\r\n\r\n\ @author\ Muhammad\ As'ad\ Muyassir\r\n\ @version\ 01-04-2021\r\n
 comment1.params=id\ name\ recruiter\ fee\ category
 comment1.target=Job(int,\ java.lang.String,\ Recruiter,\ int,\ JobCategory)
 comment1.text=\r\n\ Constructor\ untuk\ objek\ dari\ class\ Job\r\n\ @param\ id\ \ \ \ \ \ \ \ id\ pekerjaan\r\n\ @param\ name\ \ \ \ \ \ nama\ pekerjaan\r\n\ @param\ recruiter\ objek\ pemilik\ pekerjaan(Recruiter)\r\n\ @param\ fee\ \ \ \ \ \ \ bayaran\ pekerjaan\r\n\ @param\ category\ \ kategori\ pekerjaan\r\n

@@ -6,7 +6,7 @@
  */
 public class DatabaseJob
 {
-    static String[] listJob;
+    private static String[] listJob;
     
     /**
      * metode untuk menambahkan pekerjaan ke list
