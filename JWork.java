@@ -19,5 +19,14 @@ public class JWork
         epay0.printData();
         epay1.printData();
         epay2.printData();
+        
+        BankPayment bpay0 = new BankPayment(1, job, "03-04-2021", jobseeker, InvoiceStatus.Finished);
+        BankPayment bpay1 = new BankPayment(2, job, "03-04-2021", jobseeker, InvoiceStatus.Finished, 10000);
+        
+        bpay0.setTotalFee();
+        bpay1.setTotalFee();
+        
+        bpay0.printData();
+        bpay1.printData();
     }
 }

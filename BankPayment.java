@@ -2,12 +2,12 @@
  * Class Job adalah class yang menyimpan data pekerjaan.
  *
  * @author Muhammad As'ad Muyassir
- * @version 01-04-2021
+ * @version 03-04-2021
  */
-public class EwalletPayment extends Invoice
+public class BankPayment extends Invoice
 {
-    private final static PaymentType PAYMENT_TYPE = PaymentType.EwalletPayment;
-    private Bonus bonus;
+    private final static PaymentType PAYMENT_TYPE = PaymentType.BankPayment;
+    private int adminFee;
 
     /**
      * Constructor untuk objek dari class Invoice
@@ -18,7 +18,7 @@ public class EwalletPayment extends Invoice
      * @param paymentType   objek tipe pembayaran
      * @param invoiceStatus objek status invoice
      */
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public BankPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
         super(id, job, date, jobseeker, invoiceStatus);
     }
@@ -30,13 +30,13 @@ public class EwalletPayment extends Invoice
      * @param date          tanggal invoice dibuat
      * @param jobseeker     objek pekerja
      * @param paymentType   objek tipe pembayaran
-     * @param bonus         objek bonus
+     * @param adminFee      objek adminFee
      * @param invoiceStatus objek status invoice
      */
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
+    public BankPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus, int adminFee)
     {
         super(id, job, date, jobseeker, invoiceStatus);
-        this.bonus = bonus;
+        this.adminFee = adminFee;
     }
     
     /**
@@ -50,21 +50,21 @@ public class EwalletPayment extends Invoice
     }
     
     /**
-     * metode untuk mendapatkan data bonus
-     * @return objek bonus
+     * metode untuk mendapatkan data adminFee
+     * @return objek adminFee
      */
-    public Bonus getBonus()
+    public int getAdminFee()
     {
-        return bonus;
+        return adminFee;
     }
     
     /**
-     * metode untuk mengubah data bonus
-     * @param bonus objek bonus
+     * metode untuk mengubah data adminFee
+     * @param adminFee objek adminFee
      */
-    public void setBonus(Bonus bonus)
+    public void setAdminFee(int adminFee)
     {
-        this.bonus = bonus;
+        this.adminFee = adminFee;
     }
     
     /**
@@ -74,9 +74,9 @@ public class EwalletPayment extends Invoice
     @Override
     public void setTotalFee()
     {
-        if(bonus instanceof Bonus && bonus.getActive() && getJob().getFee() > bonus.getMinTotalFee())
+        if(adminFee != 0)
         {
-            totalFee = getJob().getFee() + bonus.getExtraFee();
+            totalFee = getJob().getFee() - adminFee;
         }
         else
         {
@@ -93,10 +93,7 @@ public class EwalletPayment extends Invoice
         System.out.println("Job: " + getJob().getName());
         System.out.println("Date: " + getDate());
         System.out.println("Job Seeker: " + getJobseeker().getName());
-        if(bonus instanceof Bonus && bonus.getActive() && getTotalFee() > bonus.getMinTotalFee())
-        {
-            System.out.println("Referral Code: " + bonus.getReferralCode());
-        }
+        System.out.println("Admin Fee: " + adminFee);
         System.out.println("Total Fee: " + totalFee);
         System.out.println("Status: " + getInvoiceStatus().toString());
         System.out.println("Payment Type: " + PAYMENT_TYPE);

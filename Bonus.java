@@ -62,7 +62,7 @@ public class Bonus
      */
     public int getMinTotalFee()
     {
-        return id;
+        return minTotalFee;
     }
     
     /**
