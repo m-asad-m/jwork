@@ -75,9 +75,12 @@ public class Location
         this.description = description;
     }
     
-    /** metode untuk melakukan print data provinsi pada terminal */
-    public void printData()
+    /** metode untuk melakukan return data lokasi */
+    public String toString()
     {
-        System.out.println(province);
+        String returnValue = "Province = " + province + "\n" +
+                             "City = " + city + "\n" +
+                             "Description = " + description;
+        return returnValue;
     }
 }

@@ -117,15 +117,15 @@ public class Job
         this.recruiter = recruiter;
     }
     
-    /** metode untuk melakukan print data pada terminal */
-    public void printData()
+    /** metode untuk melakukan return data */
+    public String toString()
     {
-        System.out.println("===================== JOB =====================");
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Recruiter: " + recruiter.getName());
-        System.out.println("City: " + recruiter.getLocation().getCity());
-        System.out.println("Fee: " + fee);
-        System.out.println("Category: " + category.toString());
+        String returnValue = "ID: " + id + "\n" +
+                             "Name: " + name + "\n" +
+                             "Recruiter: " + recruiter.getName() + "\n" +
+                             "City: " + recruiter.getLocation().getCity() + "\n" +
+                             "Fee: " + fee + "\n" +
+                             "Category: " + category.toString();
+        return returnValue;
     }
 }

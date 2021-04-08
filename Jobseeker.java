@@ -1,3 +1,8 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
+import java.util.regex.*;
+
 /**
  * Class Jobseeker adalah class yang menyimpan data pencari pekerjaan.
  *
@@ -7,7 +12,8 @@
 public class Jobseeker
 {
     private int id;
-    private String name, email, password, joinDate;
+    private String name, email, password;
+    Calendar joinDate;
 
     /**
      * Constructor untuk objek dari class Jobseeker
@@ -15,15 +21,49 @@ public class Jobseeker
      * @param name     nama pencari pekerjaan
      * @param email    email pencari pekerjaan
      * @param password password pencari pekerjaan
-     * @param joinDate tanggal join pencari pekerjaan
+     * @param joinDate objek gregorian calendar join pencari pekerjaan
      */
-    public Jobseeker(int id, String name, String email, String password, String joinDate)
+    public Jobseeker(int id, String name, String email, String password, Calendar joinDate)
     {
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
+        setEmail(email);
+        setPassword(password);
         this.joinDate = joinDate;
+    }
+    
+    /**
+     * Constructor untuk objek dari class Jobseeker
+     * @param id         id pencari pekerjaan
+     * @param name       nama pencari pekerjaan
+     * @param email      email pencari pekerjaan
+     * @param password   password pencari pekerjaan
+     * @param year       tahun join pencari pekerjaan
+     * @param month      bulan join pencari pekerjaan
+     * @param dayOfMonth tanggal join pencari pekerjaan
+     */
+    public Jobseeker(int id, String name, String email, String password, int year, int month, int dayOfMonth)
+    {
+        this.id = id;
+        this.name = name;
+        setEmail(email);
+        setPassword(password);
+        joinDate = new GregorianCalendar(year, month, dayOfMonth);
+    }
+    
+    /**
+     * Constructor untuk objek dari class Jobseeker
+     * @param id       id pencari pekerjaan
+     * @param name     nama pencari pekerjaan
+     * @param email    email pencari pekerjaan
+     * @param password password pencari pekerjaan
+     */
+    public Jobseeker(int id, String name, String email, String password)
+    {
+        this.id = id;
+        this.name = name;
+        setEmail(email);
+        setPassword(password);
     }
     
     /**
@@ -66,7 +106,7 @@ public class Jobseeker
      * metode untuk mendapatkan tanggal join pencari pekerjaan
      * @return tanggal join pencari pekerjaan
      */
-    public String getJoinDate()
+    public Calendar getJoinDate()
     {
         return joinDate;
     }
@@ -95,7 +135,16 @@ public class Jobseeker
      */
     public void setEmail(String email)
     {
-        this.email = email;
+        String pattern = "^[\\w&*~](\\.?[\\w&*~]+)*@\\w[-\\w&*~\\.]+$";
+        if(Pattern.matches(pattern, email))
+        {
+            this.email = email;
+        }
+        else
+        {
+            this.email = "";
+            System.out.println("Email anda tidak sesuai dengan pola yang benar");
+        }
     }
     
     /**
@@ -104,21 +153,47 @@ public class Jobseeker
      */
     public void setPassword(String password)
     {
-        this.password = password;
+        String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$";
+        if(Pattern.matches(pattern, password))
+        {
+            this.password = password;
+        }
+        else
+        {
+            this.password = "";
+            System.out.println("Password anda tidak sesuai dengan pola yang benar");
+        }
     }
     
     /**
      * metode untuk mengubah tanggal join pencari pekerjaan
-     * @param joinDate tanggal join pencari pekerjaan
+     * @param joinDate objek gregorian calendar join pencari pekerjaan
      */
-    public void setJoinDate(String joinDate)
+    public void setJoinDate(Calendar joinDate)
     {
         this.joinDate = joinDate;
     }
     
-    /** metode untuk melakukan print nama pencari kerja pada terminal */
-    public void printData()
+    /**
+     * metode untuk mengubah tanggal join pencari pekerjaan
+     * @param year       tahun join pencari pekerjaan
+     * @param month      bulan join pencari pekerjaan
+     * @param dayOfMonth tanggal join pencari pekerjaan
+     */
+    public void setJoinDate(int year, int month, int dayOfMonth)
     {
-        System.out.println(name);
+        joinDate.set(year, month, dayOfMonth);
+    }
+    
+    /** metode untuk melakukan return nama pencari kerja */
+    public String toString()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        String returnValue = "Id = " + id + "\n" +
+                             "Nama = " + name + "\n" +
+                             "Email = " + email + "\n" +
+                             "Password = " + password + "\n" +
+                             "Join Date = " + sdf.format(joinDate.getTime()) + "\n";
+        return returnValue;
     }
 }

@@ -1,3 +1,5 @@
+import java.util.GregorianCalendar;
+
 public class JWork
 {
     public static void main(String[] args)
@@ -5,8 +7,20 @@ public class JWork
         Location location = new Location("West Java", "Bekasi", "My House");
         Recruiter recruiter = new Recruiter(1, "As'ad", "muhammad.asad@ui.ac.id", "0895333889470", location);
         Job job = new Job(1, "Senior Designer", recruiter, 10000000, JobCategory.WebDeveloper);
-        Jobseeker jobseeker = new Jobseeker(1, "bambang", "bambang@gmail.com", "123123", "30-02-1985");
-        Bonus bonus0 = new Bonus(1, "abcdefg", 10000, 10000, true);
+        Jobseeker jobseeker = new Jobseeker(1, "bambang", "bamb..ang@gmail.com", "123123", new GregorianCalendar(2021, 4, 8));
+        Jobseeker jobseeker1 = new Jobseeker(2, "bambang", "bambang@gmail.com", "Password123", 2021, 4, 8);
+        Jobseeker jobseeker2 = new Jobseeker(3, "bambang", "bambang@gmail.com", "Password123");
+        
+        System.out.println(jobseeker.toString());
+        System.out.println(jobseeker1.toString());
+        System.out.println(jobseeker2.toString());
+        
+        jobseeker.setEmail("bambang@gmail.com");
+        jobseeker.setPassword("Password123");
+        
+        System.out.println(jobseeker.toString());
+        
+        /*Bonus bonus0 = new Bonus(1, "abcdefg", 10000, 10000, true);
         Bonus bonus1 = new Bonus(2, "hijklmn", 10000, 20000000, true);
         EwalletPayment epay0 = new EwalletPayment(1, job, "01-04-2021", jobseeker, InvoiceStatus.OnGoing);
         EwalletPayment epay1 = new EwalletPayment(2, job, "01-04-2021", jobseeker, bonus0, InvoiceStatus.OnGoing);
@@ -27,6 +41,6 @@ public class JWork
         bpay1.setTotalFee();
         
         bpay0.printData();
-        bpay1.printData();
+        bpay1.printData();*/
     }
 }

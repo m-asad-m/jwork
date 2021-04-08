@@ -117,9 +117,13 @@ public class Recruiter
         this.location = location;
     }
     
-    /** metode untuk melakukan print nama recruiter pada terminal */
-    public void printData()
+    /** metode untuk melakukan return data recruiter */
+    public String toString()
     {
-        System.out.println(name);
+        String returnValue = "ID = " + id + "\n" +
+                             "Name = " + name + "\n" +
+                             "PhoneNumber = " + phoneNumber + "\n" +
+                             "Location = " + location.getDescription();
+        return returnValue;
     }
 }

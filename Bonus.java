@@ -119,14 +119,14 @@ public class Bonus
         this.active = active;
     }
     
-    /** metode untuk melakukan print data pada terminal */
-    public void printData()
+    /** metode untuk melakukan return data bonus */
+    public String toString()
     {
-        System.out.println("===================== Bonus =====================");
-        System.out.println("ID: " + id);
-        System.out.println("Referral Code: " + referralCode);
-        System.out.println("Extra Fee: " + extraFee);
-        System.out.println("Min TotalFee: " + minTotalFee);
-        System.out.println("Active: " + active);
+        String returnValue = "ID = " + id + "\n" +
+                             "Referral Code = " + referralCode + "\n" +
+                             "Extra Fee = " + extraFee + "\n" +
+                             "Min TotalFee = " + minTotalFee + "\n" +
+                             "Active status = " + active;
+        return returnValue;
     }
 }
