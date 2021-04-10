@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+
 /**
  * Class Job adalah class yang menyimpan data pekerjaan.
  *
@@ -13,29 +15,27 @@ public class EwalletPayment extends Invoice
      * Constructor untuk objek dari class Invoice
      * @param id            id invoice
      * @param job           objek pekerjaan
-     * @param date          tanggal invoice dibuat
      * @param jobseeker     objek pekerja
      * @param paymentType   objek tipe pembayaran
      * @param invoiceStatus objek status invoice
      */
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
     }
     
     /**
      * Constructor untuk objek dari class Invoice
      * @param id            id invoice
      * @param job           objek pekerjaan
-     * @param date          tanggal invoice dibuat
      * @param jobseeker     objek pekerja
      * @param paymentType   objek tipe pembayaran
      * @param bonus         objek bonus
      * @param invoiceStatus objek status invoice
      */
-    public EwalletPayment(int id, Job job, String date, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, Job job, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
     {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
         this.bonus = bonus;
     }
     
@@ -86,19 +86,21 @@ public class EwalletPayment extends Invoice
     
     /** metode untuk melakukan print data pada terminal */
     @Override
-    public void printData()
+    public String toString()
     {
-        System.out.println("===================== INVOICE =====================");
-        System.out.println("ID: " + getId());
-        System.out.println("Job: " + getJob().getName());
-        System.out.println("Date: " + getDate());
-        System.out.println("Job Seeker: " + getJobseeker().getName());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        String returnValue = "===================== INVOICE =====================" + "\n" +
+                             "ID: " + getId() + "\n" +
+                             "Job: " + getJob().getName() + "\n" +
+                             "Date: " + sdf.format(getDate().getTime()) + "\n" +
+                             "Job Seeker: " + getJobseeker().getName() + "\n";
         if(bonus instanceof Bonus && bonus.getActive() && getTotalFee() > bonus.getMinTotalFee())
         {
-            System.out.println("Referral Code: " + bonus.getReferralCode());
+            returnValue += "Referral Code: " + bonus.getReferralCode() + "\n" ;
         }
-        System.out.println("Total Fee: " + totalFee);
-        System.out.println("Status: " + getInvoiceStatus().toString());
-        System.out.println("Payment Type: " + PAYMENT_TYPE);
+        returnValue += "Total Fee: " + totalFee + "\n" +
+                       "Status: " + getInvoiceStatus().toString() + "\n" +
+                       "Payment Type: " + PAYMENT_TYPE;
+        return returnValue;
     }
 }

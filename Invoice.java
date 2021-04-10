@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 /**
  * Class Invoice adalah class yang menyimpan data invoice.
  *
@@ -8,7 +10,7 @@ public abstract class Invoice
 {
     private int id;
     private Job job;
-    private String date;
+    private Calendar date;
     protected int totalFee;
     private Jobseeker jobseeker;
     private InvoiceStatus invoiceStatus;
@@ -17,18 +19,17 @@ public abstract class Invoice
      * Constructor untuk objek dari class Invoice
      * @param id            id invoice
      * @param job           objek pekerjaan
-     * @param date          tanggal invoice dibuat
      * @param jobseeker     objek pekerja
      * @param paymentType   objek tipe pembayaran
      * @param invoiceStatus objek status invoice
      */
-    public Invoice(int id, Job job, String date, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public Invoice(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
     {
         this.id = id;
         this.job = job;
-        this.date = date;
         this.jobseeker = jobseeker;
         this.invoiceStatus = invoiceStatus;
+        date = Calendar.getInstance();
     }
     
     /**
@@ -53,7 +54,7 @@ public abstract class Invoice
      * metode untuk mendapatkan tanggal dibuat invoice
      * @return tanggal invoice dibuat
      */
-    public String getDate()
+    public Calendar getDate()
     {
         return date;
     }
@@ -111,11 +112,22 @@ public abstract class Invoice
     
     /**
      * metode untuk mengubah tanggal invoice
-     * @param date tanggal invoice
+     * @param joinDate objek gregorian calendar tanggal invoice
      */
-    public void setDate(String date)
+    public void setDate(Calendar date)
     {
         this.date = date;
+    }
+    
+    /**
+     * metode untuk mengubah tanggal invoice
+     * @param year       tahun invoice
+     * @param month      bulan invoice
+     * @param dayOfMonth tanggal invoice
+     */
+    public void setDate(int year, int month, int dayOfMonth)
+    {
+        date.set(year, month-1, dayOfMonth);
     }
     
     /**
@@ -142,6 +154,6 @@ public abstract class Invoice
         this.invoiceStatus = invoiceStatus;
     }
     
-    /** metode untuk melakukan print data pada terminal */
-    public abstract void printData();
+    /** metode untuk melakukan return data invoice */
+    public abstract String toString();
 }

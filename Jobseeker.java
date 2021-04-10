@@ -48,7 +48,7 @@ public class Jobseeker
         this.name = name;
         setEmail(email);
         setPassword(password);
-        joinDate = new GregorianCalendar(year, month, dayOfMonth);
+        joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
     }
     
     /**
@@ -64,6 +64,7 @@ public class Jobseeker
         this.name = name;
         setEmail(email);
         setPassword(password);
+        joinDate = Calendar.getInstance();
     }
     
     /**
@@ -182,7 +183,7 @@ public class Jobseeker
      */
     public void setJoinDate(int year, int month, int dayOfMonth)
     {
-        joinDate.set(year, month, dayOfMonth);
+        joinDate.set(year, month-1, dayOfMonth);
     }
     
     /** metode untuk melakukan return nama pencari kerja */
