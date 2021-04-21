@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.target=InvoiceStatus
-comment0.text=\r\n\ Enumeration\ class\ InvoiceStatus\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\r\n\ @author\ Muhammad\ As'ad\ Muyassir\r\n\ @version\ 01-04-2021\r\n
-comment1.params=
-comment1.target=java.lang.String\ toString()
-numComments=2
