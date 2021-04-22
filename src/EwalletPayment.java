@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  * Class Job adalah class yang menyimpan data pekerjaan.
@@ -19,9 +20,9 @@ public class EwalletPayment extends Invoice
      * @param paymentType   objek tipe pembayaran
      * @param invoiceStatus objek status invoice
      */
-    public EwalletPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
     }
     
     /**
@@ -33,9 +34,9 @@ public class EwalletPayment extends Invoice
      * @param bonus         objek bonus
      * @param invoiceStatus objek status invoice
      */
-    public EwalletPayment(int id, Job job, Jobseeker jobseeker, Bonus bonus, InvoiceStatus invoiceStatus)
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, Bonus bonus)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
         this.bonus = bonus;
     }
     
@@ -74,13 +75,19 @@ public class EwalletPayment extends Invoice
     @Override
     public void setTotalFee()
     {
-        if(bonus instanceof Bonus && bonus.getActive() && getJob().getFee() > bonus.getMinTotalFee())
+        int total = 0;
+        for(Job job: getJobs())
         {
-            totalFee = getJob().getFee() + bonus.getExtraFee();
+            total += job.getFee();
+        }
+        if(bonus instanceof Bonus && bonus.getActive() && total > bonus.getMinTotalFee())
+        {
+
+            totalFee = total + bonus.getExtraFee();
         }
         else
         {
-            totalFee = getJob().getFee();
+            totalFee = total;
         }
     }
     
@@ -91,9 +98,12 @@ public class EwalletPayment extends Invoice
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         String returnValue = "===================== INVOICE =====================" + "\n" +
                              "ID: " + getId() + "\n" +
-                             "Job: " + getJob().getName() + "\n" +
-                             "Date: " + sdf.format(getDate().getTime()) + "\n" +
-                             "Job Seeker: " + getJobseeker().getName() + "\n";
+                             "Jobs: ";
+        for(Job job: getJobs()) {
+            returnValue += job.getName() + " ";
+        }
+        returnValue += "Date: " + sdf.format(getDate().getTime()) + "\n" +
+                       "Job Seeker: " + getJobseeker().getName() + "\n";
         if(bonus instanceof Bonus && bonus.getActive() && getTotalFee() > bonus.getMinTotalFee())
         {
             returnValue += "Referral Code: " + bonus.getReferralCode() + "\n" ;

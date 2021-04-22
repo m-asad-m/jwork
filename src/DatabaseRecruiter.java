@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Class DatabaseRecruiter.
  *
@@ -6,40 +8,63 @@
  */
 public class DatabaseRecruiter
 {
-    private static String[] listRecruiter;
+    private static ArrayList<Recruiter> RECRUITER_DATABASE = new ArrayList<Recruiter>();
+    private static int lastId = 0;
+
+    /**
+     * metode untuk mendapatkan list Recruiter
+     * @return array list Recruiter
+     */
+    public static ArrayList<Recruiter> getRecruiterDatabase()
+    {
+        return RECRUITER_DATABASE;
+    }
+
+    /**
+     * method untuk mendapatkan id terakhir
+     * @return id terakhir
+     */
+    public static int getLastId()
+    {
+        return lastId;
+    }
+
+    /**
+     * method untuk mendapatkan list Recruiter berdasarkan id
+     * @param   id  id recruiter
+     * @return      objek recruiter
+     */
+    public static Recruiter getRecruiterById(int id)
+    {
+        Recruiter returnValue = null;
+        for(Recruiter recruiter: RECRUITER_DATABASE)
+        {
+            if(recruiter.getId() == id)
+            {
+                returnValue = recruiter;
+            }
+        }
+        return returnValue;
+    }
 
     /**
      * metode untuk menambahkan pekerjaan ke list
-     * @param Recruiter objek Recruiter
+     * @param recruiter objek Recruiter
      * @return          boolean
      */
     public static boolean addRecruiter(Recruiter recruiter)
     {
-        return false;
+        lastId = recruiter.getId();
+        return RECRUITER_DATABASE.add(recruiter);
     }
     
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param Recruiter objek Recruiter
-     * @return          boolean
+     * @param id    id recruiter
+     * @return      boolean
      */
-    public static boolean removeRecruiter(Recruiter recruiter)
+    public static boolean removeRecruiter(int id)
     {
-        return false;
-    }
-    
-    /**
-     * metode untuk mendapatkan list Recruiter
-     * @return objek Recruiter
-     */
-    public static Recruiter getRecruiter()
-    {
-        return null;
-    }
-    
-    /** metode untuk melakukan print list Recruiter pada terminal */
-    public static String[] getListRecruiter()
-    {
-        return null;
+        return RECRUITER_DATABASE.removeIf(recruiter -> (recruiter.getId() == id));
     }
 }

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Class DatabaseJob.
  *
@@ -6,40 +8,99 @@
  */
 public class DatabaseJob
 {
-    private static String[] listJob;
-    
+    private static ArrayList<Job> JOB_DATABASE = new ArrayList<Job>();
+    private static int lastId = 0;
+
+    /**
+     * metode untuk mendapatkan list Job
+     * @return array list Job
+     */
+    public static ArrayList<Job> getJobDatabase()
+    {
+        return JOB_DATABASE;
+    }
+
+    /**
+     * method untuk mendapatkan id terakhir
+     * @return id terakhir
+     */
+    public static int getLastId()
+    {
+        return lastId;
+    }
+
+    /**
+     * method untuk mendapatkan list Job berdasarkan id
+     * @param   id  id job
+     * @return      objek Job
+     */
+    public static Job getJobById(int id)
+    {
+        Job returnValue = null;
+        for(Job job: JOB_DATABASE)
+        {
+            if(job.getId() == id)
+            {
+                returnValue = job;
+            }
+        }
+        return returnValue;
+    }
+
+    /**
+     * method untuk mendapatkan list Job berdasarkan recruiter
+     * @param recruiterId   id recruiter
+     * @return              null
+     */
+    public static ArrayList<Job> getJobByRecruiter(int recruiterId)
+    {
+        ArrayList<Job> returnValue = new ArrayList<Job>();
+        for(Job job: JOB_DATABASE)
+        {
+            if(job.getRecruiter().getId() == recruiterId)
+            {
+                returnValue.add(job);
+            }
+        }
+        return returnValue;
+    }
+
+    /**
+     * method untuk mendapatkan list Job berdasarkan kategori
+     * @param category  ketegori job
+     * @return          null
+     */
+    public static ArrayList<Job> getJobByCategory(JobCategory category)
+    {
+        ArrayList<Job> returnValue = new ArrayList<Job>();
+        for(Job job: JOB_DATABASE)
+        {
+            if(job.getCategory() == category)
+            {
+                returnValue.add(job);
+            }
+        }
+        return returnValue;
+    }
+
     /**
      * metode untuk menambahkan pekerjaan ke list
-     * @param job objek job
-     * @return    boolean
+     * @param job   objek job
+     * @return      boolean
      */
     public static boolean addJob(Job job)
     {
-        return false;
+        lastId = job.getId();
+        return JOB_DATABASE.add(job);
     }
-    
+
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param job objek job
-     * @return    boolean
+     * @param id    id job
+     * @return      boolean
      */
-    public static boolean removeJob(Job job)
+    public static boolean removeJob(int id)
     {
-        return false;
-    }
-    
-    /**
-     * metode untuk mendapatkan list job
-     * @return objek job
-     */
-    public static Job getJob()
-    {
-        return null;
-    }
-    
-    /** metode untuk melakukan print list job pada terminal */
-    public static String[] getListJob()
-    {
-        return null;
+        return JOB_DATABASE.removeIf(job -> (job.getId() == id));
     }
 }

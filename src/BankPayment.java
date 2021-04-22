@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  * Class Job adalah class yang menyimpan data pekerjaan.
@@ -19,9 +20,9 @@ public class BankPayment extends Invoice
      * @param paymentType   objek tipe pembayaran
      * @param invoiceStatus objek status invoice
      */
-    public BankPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus)
+    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
     }
     
     /**
@@ -33,9 +34,9 @@ public class BankPayment extends Invoice
      * @param adminFee      objek adminFee
      * @param invoiceStatus objek status invoice
      */
-    public BankPayment(int id, Job job, Jobseeker jobseeker, InvoiceStatus invoiceStatus, int adminFee)
+    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, int adminFee)
     {
-        super(id, job, jobseeker, invoiceStatus);
+        super(id, jobs, jobseeker);
         this.adminFee = adminFee;
     }
     
@@ -76,11 +77,20 @@ public class BankPayment extends Invoice
     {
         if(adminFee != 0)
         {
-            totalFee = getJob().getFee() - adminFee;
+            totalFee = 0;
+            for(Job job: getJobs())
+            {
+                totalFee += job.getFee();
+            }
+            totalFee -= adminFee;
         }
         else
         {
-            totalFee = getJob().getFee();
+            totalFee = 0;
+            for(Job job: getJobs())
+            {
+                totalFee += job.getFee();
+            }
         }
     }
     
@@ -91,8 +101,11 @@ public class BankPayment extends Invoice
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         String returnValue = "===================== INVOICE =====================" + "\n" +
                              "ID: " + getId() + "\n" +
-                             "Job: " + getJob().getName() + "\n" +
-                             "Date: " + sdf.format(getDate().getTime()) + "\n" +
+                             "Jobs: ";
+        for(Job job: getJobs()) {
+            returnValue += job.getName() + " ";
+        }
+        returnValue += "\n" + "Date: " + sdf.format(getDate().getTime()) + "\n" +
                              "Job Seeker: " + getJobseeker().getName() + "\n" +
                              "Admin Fee: " + adminFee + "\n" +
                              "Total Fee: " + totalFee + "\n" +

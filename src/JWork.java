@@ -5,28 +5,21 @@ public class JWork
     public static void main(String[] args)
     {
         Location location = new Location("West Java", "Bekasi", "My House");
-        Recruiter recruiter = new Recruiter(1, "As'ad", "muhammad.asad@ui.ac.id", "0895333889470", location);
-        Job job = new Job(1, "Senior Designer", recruiter, 10000000, JobCategory.WebDeveloper);
-        Jobseeker jobseeker = new Jobseeker(1, "bambang", "bamb..ang@gmail.com", "123123", new GregorianCalendar(2021, 4, 8));
-        Jobseeker jobseeker1 = new Jobseeker(2, "bambang", "bambang@gmail.com", "Password123", 2021, 4, 8);
-        Jobseeker jobseeker2 = new Jobseeker(3, "bambang", "bambang@gmail.com", "Password123");
-        
-        System.out.println(jobseeker.toString());
-        System.out.println(jobseeker1.toString());
-        System.out.println(jobseeker2.toString());
-        
-        jobseeker.setEmail("bambang@gmail.com");
-        jobseeker.setPassword("Password123");
-        
-        System.out.println(jobseeker.toString());
-        
-        Bonus bonus = new Bonus(1, "abcdefg", 10000, 10000, true);
-        EwalletPayment epay = new EwalletPayment(2, job, jobseeker, bonus, InvoiceStatus.OnGoing);
-        epay.setTotalFee();
-        System.out.println(epay.toString());
-        
-        BankPayment bpay = new BankPayment(1, job, jobseeker, InvoiceStatus.Finished, 10000);
-        bpay.setTotalFee();
-        System.out.println(bpay.toString());
+        DatabaseRecruiter.addRecruiter(new Recruiter(DatabaseRecruiter.getLastId()+1, "As'ad", "muhammad.asad@ui.ac.id", "0895333889470", location));
+        DatabaseJobseeker.addJobseeker(new Jobseeker(DatabaseJobseeker.getLastId()+1, "Muhammad As'ad Muyassir", "muhammad.asad@ui.ac.id", "Password123", 2021, 4, 22));
+        DatabaseJobseeker.addJobseeker(new Jobseeker(DatabaseJobseeker.getLastId()+1, "Muhammad As'ad Muyassir", "muhammad.asad@ui.ac.id", "Password112233", 2021, 4, 22));
+        DatabaseJobseeker.addJobseeker(new Jobseeker(DatabaseJobseeker.getLastId()+1, "Hansaka Wijaya", "hansaka.wijaya@ui.ac.id", "Password123", 2021, 4, 22));
+
+        for(Jobseeker jobseeker: DatabaseJobseeker.getJobseekerDatabase()){
+            System.out.println(jobseeker.toString());
+        }
+
+        DatabaseJob.addJob(new Job(DatabaseJob.getLastId()+1, "Senior Web Developer", DatabaseRecruiter.getRecruiterById(1), 10000000, JobCategory.WebDeveloper));
+        DatabaseJob.addJob(new Job(DatabaseJob.getLastId()+1, "Junior Web Developer", DatabaseRecruiter.getRecruiterById(1), 20000000, JobCategory.WebDeveloper));
+        DatabaseJob.addJob(new Job(DatabaseJob.getLastId()+1, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 30000000, JobCategory.UI));
+
+        for(Job job: DatabaseJob.getJobByCategory(JobCategory.WebDeveloper)){
+            System.out.println(job.toString());
+        }
     }
 }
