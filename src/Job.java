@@ -120,12 +120,13 @@ public class Job
     /** metode untuk melakukan return data */
     public String toString()
     {
-        String returnValue = "ID: " + id + "\n" +
+        String returnValue = "===================== JOB =====================" + "\n" +
+                             "ID: " + id + "\n" +
                              "Name: " + name + "\n" +
                              "Recruiter: " + recruiter.getName() + "\n" +
                              "City: " + recruiter.getLocation().getCity() + "\n" +
                              "Fee: " + fee + "\n" +
-                             "Category: " + category.toString();
+                             "Category: " + category.toString() + "\n";
         return returnValue;
     }
 }

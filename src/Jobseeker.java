@@ -190,7 +190,8 @@ public class Jobseeker
     public String toString()
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
-        String returnValue = "Id = " + id + "\n" +
+        String returnValue = "===================== JOB SEEKER =====================" + "\n" +
+                             "Id = " + id + "\n" +
                              "Nama = " + name + "\n" +
                              "Email = " + email + "\n" +
                              "Password = " + password + "\n" +

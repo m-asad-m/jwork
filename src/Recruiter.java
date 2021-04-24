@@ -120,10 +120,11 @@ public class Recruiter
     /** metode untuk melakukan return data recruiter */
     public String toString()
     {
-        String returnValue = "ID = " + id + "\n" +
+        String returnValue = "===================== RECRUITER =====================" + "\n" +
+                             "ID = " + id + "\n" +
                              "Name = " + name + "\n" +
                              "PhoneNumber = " + phoneNumber + "\n" +
-                             "Location = " + location.getDescription();
+                             "Location = " + location.getDescription() + "\n";
         return returnValue;
     }
 }

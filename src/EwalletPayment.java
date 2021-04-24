@@ -94,8 +94,14 @@ public class EwalletPayment extends Invoice
         String returnValue = "===================== INVOICE =====================" + "\n" +
                              "ID: " + getId() + "\n" +
                              "Jobs: ";
-        for(Job job: getJobs()) {
-            returnValue += job.getName() + " ";
+        for(int i = 0; i < getJobs().size(); i++){
+            returnValue += getJobs().get(i).getName();
+            if(i < getJobs().size()-1){
+                returnValue +=  ", ";
+            }
+            else {
+                returnValue += "\n";
+            }
         }
         returnValue += "Date: " + sdf.format(getDate().getTime()) + "\n" +
                        "Job Seeker: " + getJobseeker().getName() + "\n";
@@ -105,7 +111,7 @@ public class EwalletPayment extends Invoice
         }
         returnValue += "Total Fee: " + totalFee + "\n" +
                        "Status: " + getInvoiceStatus().toString() + "\n" +
-                       "Payment Type: " + PAYMENT_TYPE;
+                       "Payment Type: " + PAYMENT_TYPE + "\n";
         return returnValue;
     }
 }

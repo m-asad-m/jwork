@@ -78,9 +78,10 @@ public class Location
     /** metode untuk melakukan return data lokasi */
     public String toString()
     {
-        String returnValue = "Province = " + province + "\n" +
+        String returnValue = "===================== LOCATION =====================" + "\n" +
+                             "Province = " + province + "\n" +
                              "City = " + city + "\n" +
-                             "Description = " + description;
+                             "Description = " + description + "\n";
         return returnValue;
     }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class JWork
@@ -30,5 +31,29 @@ public class JWork
         }
 
         DatabaseInvoice.addInvoice(new BankPayment(DatabaseInvoice.getLastId()+1, DatabaseJob.getJobDatabase(), DatabaseJobseeker.getJobseekerById(1)));
+
+        ArrayList<Invoice> i = DatabaseInvoice.getInvoiceByJobSeeker(1);
+        i.get(i.size() - 1).setTotalFee();
+
+        DatabaseInvoice.addInvoice(new EwalletPayment(DatabaseInvoice.getLastId()+1, DatabaseJob.getJobDatabase(), DatabaseJobseeker.getJobseekerById(1)));
+
+        i = DatabaseInvoice.getInvoiceByJobSeeker(1);
+        i.get(i.size() - 1).setTotalFee();
+
+        for(Invoice invoice: DatabaseInvoice.getInvoiceDatabase()){
+            System.out.println(invoice.toString());
+        }
+
+        DatabaseInvoice.changeInvoice(1, InvoiceStatus.Finished);
+
+        DatabaseInvoice.addInvoice(new EwalletPayment(DatabaseInvoice.getLastId()+1, DatabaseJob.getJobDatabase(), DatabaseJobseeker.getJobseekerById(2), DatabaseBonus.getBonusByReferralCode("BONUSBONUS")));
+
+        DatabaseBonus.activateBonus(1);
+
+        DatabaseInvoice.getInvoiceDatabase().forEach(invoice -> invoice.setTotalFee());
+
+        for(Invoice invoice: DatabaseInvoice.getInvoiceDatabase()){
+            System.out.println(invoice.toString());
+        }
     }
 }

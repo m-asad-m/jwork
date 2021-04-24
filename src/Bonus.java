@@ -122,11 +122,12 @@ public class Bonus
     /** metode untuk melakukan return data bonus */
     public String toString()
     {
-        String returnValue = "ID = " + id + "\n" +
+        String returnValue = "===================== BONUS =====================" + "\n" +
+                             "ID = " + id + "\n" +
                              "Referral Code = " + referralCode + "\n" +
                              "Extra Fee = " + extraFee + "\n" +
                              "Min TotalFee = " + minTotalFee + "\n" +
-                             "Active status = " + active;
+                             "Active status = " + active + "\n";
         return returnValue;
     }
 }
