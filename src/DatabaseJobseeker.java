@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 /**
- * Class DatabaseJobseekerseeker.
+ * Class Database Jobseeker.
  *
  * @author Muhammad As'ad Muyassir
- * @version 01-04-2021
+ * @version 22-04-2021
  */
 public class DatabaseJobseeker
 {
@@ -31,7 +31,7 @@ public class DatabaseJobseeker
 
     /**
      * method untuk mendapatkan list Jobseeker berdasarkan id
-     * @param   id  id Jobseeker
+     * @param  id   id Jobseeker
      * @return      objek Jobseeker
      */
     public static Jobseeker getJobseekerById(int id)
@@ -49,8 +49,8 @@ public class DatabaseJobseeker
 
     /**
      * metode untuk menambahkan pekerjaan ke list
-     * @param jobseeker objek Jobseeker
-     * @return          boolean
+     * @param  jobseeker    objek Jobseeker
+     * @return              boolean
      */
     public static boolean addJobseeker(Jobseeker jobseeker)
     {
@@ -67,7 +67,7 @@ public class DatabaseJobseeker
 
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param id    id Jobseeker
+     * @param  id   id Jobseeker
      * @return      boolean
      */
     public static boolean removeJobseeker(int id)

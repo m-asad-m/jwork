@@ -2,10 +2,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * Class Job adalah class yang menyimpan data pekerjaan.
+ * Class Ewallet Payment.
  *
  * @author Muhammad As'ad Muyassir
- * @version 01-04-2021
+ * @version 22-04-2021
  */
 public class EwalletPayment extends Invoice
 {
@@ -15,10 +15,8 @@ public class EwalletPayment extends Invoice
     /**
      * Constructor untuk objek dari class Invoice
      * @param id            id invoice
-     * @param job           objek pekerjaan
+     * @param jobs          array list pekerjaan
      * @param jobseeker     objek pekerja
-     * @param paymentType   objek tipe pembayaran
-     * @param invoiceStatus objek status invoice
      */
     public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
@@ -28,11 +26,9 @@ public class EwalletPayment extends Invoice
     /**
      * Constructor untuk objek dari class Invoice
      * @param id            id invoice
-     * @param job           objek pekerjaan
+     * @param jobs          array list pekerjaan
      * @param jobseeker     objek pekerja
-     * @param paymentType   objek tipe pembayaran
      * @param bonus         objek bonus
-     * @param invoiceStatus objek status invoice
      */
     public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, Bonus bonus)
     {
@@ -70,7 +66,6 @@ public class EwalletPayment extends Invoice
     
     /**
      * metode untuk mengubah total bayaran
-     * @param totalFee total bayaran
      */
     @Override
     public void setTotalFee()

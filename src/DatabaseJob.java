@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Class DatabaseJob.
  *
  * @author Muhammad As'ad Muyassir
- * @version 25-03-2021
+ * @version 22-04-2021
  */
 public class DatabaseJob
 {
@@ -21,7 +21,7 @@ public class DatabaseJob
     }
 
     /**
-     * method untuk mendapatkan id terakhir
+     * metode untuk mendapatkan id terakhir
      * @return id terakhir
      */
     public static int getLastId()
@@ -30,8 +30,8 @@ public class DatabaseJob
     }
 
     /**
-     * method untuk mendapatkan list Job berdasarkan id
-     * @param   id  id job
+     * metode untuk mendapatkan list Job berdasarkan id
+     * @param  id   id job
      * @return      objek Job
      */
     public static Job getJobById(int id)
@@ -48,9 +48,9 @@ public class DatabaseJob
     }
 
     /**
-     * method untuk mendapatkan list Job berdasarkan recruiter
-     * @param recruiterId   id recruiter
-     * @return              null
+     * metode untuk mendapatkan list Job berdasarkan recruiter
+     * @param  recruiterId  id recruiter
+     * @return              array list pekerjaan
      */
     public static ArrayList<Job> getJobByRecruiter(int recruiterId)
     {
@@ -66,9 +66,9 @@ public class DatabaseJob
     }
 
     /**
-     * method untuk mendapatkan list Job berdasarkan kategori
-     * @param category  ketegori job
-     * @return          null
+     * metode untuk mendapatkan list Job berdasarkan kategori
+     * @param  category kategori job
+     * @return          array list pekerjaan
      */
     public static ArrayList<Job> getJobByCategory(JobCategory category)
     {
@@ -85,7 +85,7 @@ public class DatabaseJob
 
     /**
      * metode untuk menambahkan pekerjaan ke list
-     * @param job   objek job
+     * @param  job  objek job
      * @return      boolean
      */
     public static boolean addJob(Job job)
@@ -96,7 +96,7 @@ public class DatabaseJob
 
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param id    id job
+     * @param  id   id job
      * @return      boolean
      */
     public static boolean removeJob(int id)

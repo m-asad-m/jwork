@@ -14,6 +14,13 @@ public class JWork
             System.out.println(jobseeker.toString());
         }
 
+        DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, "BONUSBONUS", 101010, 15000000, false));
+        DatabaseBonus.addBonus(new Bonus(DatabaseBonus.getLastId()+1, "BONUSBONUS", 101010, 25000000, true));
+
+        for(Bonus bonus: DatabaseBonus.getBonusDatabase()){
+            System.out.println(bonus.toString());
+        }
+
         DatabaseJob.addJob(new Job(DatabaseJob.getLastId()+1, "Senior Web Developer", DatabaseRecruiter.getRecruiterById(1), 10000000, JobCategory.WebDeveloper));
         DatabaseJob.addJob(new Job(DatabaseJob.getLastId()+1, "Junior Web Developer", DatabaseRecruiter.getRecruiterById(1), 20000000, JobCategory.WebDeveloper));
         DatabaseJob.addJob(new Job(DatabaseJob.getLastId()+1, "Senior Designer", DatabaseRecruiter.getRecruiterById(1), 30000000, JobCategory.UI));
@@ -21,5 +28,7 @@ public class JWork
         for(Job job: DatabaseJob.getJobByCategory(JobCategory.WebDeveloper)){
             System.out.println(job.toString());
         }
+
+        DatabaseInvoice.addInvoice(new BankPayment(DatabaseInvoice.getLastId()+1, DatabaseJob.getJobDatabase(), DatabaseJobseeker.getJobseekerById(1)));
     }
 }

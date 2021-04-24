@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Class DatabaseBonus.
  *
  * @author Muhammad As'ad Muyassir
- * @version 01-04-2021
+ * @version 22-04-2021
  */
 public class DatabaseBonus
 {
@@ -21,7 +21,7 @@ public class DatabaseBonus
     }
 
     /**
-     * method untuk mendapatkan id terakhir
+     * metode untuk mendapatkan id terakhir
      * @return id terakhir
      */
     public static int getLastId()
@@ -30,7 +30,7 @@ public class DatabaseBonus
     }
 
     /**
-     * method untuk mendapatkan list Bonus berdasarkan id
+     * metode untuk mendapatkan list Bonus berdasarkan id
      * @param   id  id bonus
      * @return      objek bonus
      */
@@ -48,9 +48,9 @@ public class DatabaseBonus
     }
 
     /**
-     * method for getBonusByReferralCode
-     * @param referralCode  kode referral
-     * @return              null
+     * metode for getBonusByReferralCode
+     * @param  referralCode kode referral
+     * @return              objek bonus
      */
     public static Bonus getBonusByReferralCode(String referralCode)
     {
@@ -67,8 +67,8 @@ public class DatabaseBonus
 
     /**
      * metode untuk menambahkan pekerjaan ke list
-     * @param bonus objek bonus
-     * @return      boolean
+     * @param  bonus    objek bonus
+     * @return          boolean
      */
     public static boolean addBonus(Bonus bonus)
     {
@@ -84,9 +84,9 @@ public class DatabaseBonus
     }
 
     /**
-     * method for activeBonus
-     * @param id    id bonus
-     * @return      false
+     * metode untuk mengaktifkan bonus
+     * @param  id   id bonus
+     * @return      boolean
      */
     public static boolean activateBonus(int id)
     {
@@ -101,9 +101,9 @@ public class DatabaseBonus
         return false;
     }
     /**
-     * method for deactivateBonus
-     * @param id    id bonus
-     * @return      false
+     * metode untuk menonaktifkan bonus
+     * @param  id   id bonus
+     * @return      boolean
      */
     public static boolean deactivateBonus(int id)
     {
@@ -120,7 +120,7 @@ public class DatabaseBonus
 
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param id    id Bonus
+     * @param  id   id Bonus
      * @return      boolean
      */
     public static boolean removeBonus(int id)

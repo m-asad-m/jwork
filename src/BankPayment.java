@@ -2,10 +2,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * Class Job adalah class yang menyimpan data pekerjaan.
+ * Class Bank Payment.
  *
  * @author Muhammad As'ad Muyassir
- * @version 03-04-2021
+ * @version 22-04-2021
  */
 public class BankPayment extends Invoice
 {
@@ -15,10 +15,8 @@ public class BankPayment extends Invoice
     /**
      * Constructor untuk objek dari class Invoice
      * @param id            id invoice
-     * @param job           objek pekerjaan
+     * @param jobs          array list pekerjaan
      * @param jobseeker     objek pekerja
-     * @param paymentType   objek tipe pembayaran
-     * @param invoiceStatus objek status invoice
      */
     public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
@@ -28,11 +26,9 @@ public class BankPayment extends Invoice
     /**
      * Constructor untuk objek dari class Invoice
      * @param id            id invoice
-     * @param job           objek pekerjaan
+     * @param jobs          array list pekerjaan
      * @param jobseeker     objek pekerja
-     * @param paymentType   objek tipe pembayaran
      * @param adminFee      objek adminFee
-     * @param invoiceStatus objek status invoice
      */
     public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, int adminFee)
     {
@@ -70,7 +66,6 @@ public class BankPayment extends Invoice
     
     /**
      * metode untuk mengubah total bayaran
-     * @param totalFee total bayaran
      */
     @Override
     public void setTotalFee()

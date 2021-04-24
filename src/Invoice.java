@@ -6,7 +6,7 @@ import java.util.Calendar;
  * Class Invoice adalah class yang menyimpan data invoice.
  *
  * @author Muhammad As'ad Muyassir
- * @version 01-04-2021
+ * @version 24-04-2021
  */
 public abstract class Invoice
 {
@@ -20,10 +20,8 @@ public abstract class Invoice
     /**
      * Constructor untuk objek dari class Invoice
      * @param id            id invoice
-     * @param job           objek pekerjaan
+     * @param jobs          array list pekerjaan
      * @param jobseeker     objek pekerja
-     * @param paymentType   objek tipe pembayaran
-     * @param invoiceStatus objek status invoice
      */
     public Invoice(int id, ArrayList<Job> jobs, Jobseeker jobseeker)
     {
@@ -105,7 +103,7 @@ public abstract class Invoice
     
     /**
      * metode untuk mengubah id pekerjaan
-     * @param id id pekerjaan
+     * @param jobs array list pekerjaan
      */
     public void setJobs(ArrayList<Job> jobs)
     {
@@ -114,7 +112,7 @@ public abstract class Invoice
     
     /**
      * metode untuk mengubah tanggal invoice
-     * @param joinDate objek gregorian calendar tanggal invoice
+     * @param date objek gregorian calendar tanggal invoice
      */
     public void setDate(Calendar date)
     {
@@ -134,7 +132,6 @@ public abstract class Invoice
     
     /**
      * metode untuk mengubah total bayaran
-     * @param totalFee total bayaran
      */
     public abstract void setTotalFee();
     
@@ -149,9 +146,9 @@ public abstract class Invoice
     
     /**
      * metode untuk mengubah data status invoice
-     * @param status objek status invoice
+     * @param invoiceStatus objek status invoice
      */
-    public void setInvoiceStatus(InvoiceStatus status)
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus)
     {
         this.invoiceStatus = invoiceStatus;
     }

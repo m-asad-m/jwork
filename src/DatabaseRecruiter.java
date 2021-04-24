@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Class DatabaseRecruiter.
  *
  * @author Muhammad As'ad Muyassir
- * @version 01-04-2021
+ * @version 22-04-2021
  */
 public class DatabaseRecruiter
 {
@@ -21,7 +21,7 @@ public class DatabaseRecruiter
     }
 
     /**
-     * method untuk mendapatkan id terakhir
+     * metode untuk mendapatkan id terakhir
      * @return id terakhir
      */
     public static int getLastId()
@@ -30,8 +30,8 @@ public class DatabaseRecruiter
     }
 
     /**
-     * method untuk mendapatkan list Recruiter berdasarkan id
-     * @param   id  id recruiter
+     * metode untuk mendapatkan list Recruiter berdasarkan id
+     * @param  id   id recruiter
      * @return      objek recruiter
      */
     public static Recruiter getRecruiterById(int id)
@@ -49,8 +49,8 @@ public class DatabaseRecruiter
 
     /**
      * metode untuk menambahkan pekerjaan ke list
-     * @param recruiter objek Recruiter
-     * @return          boolean
+     * @param  recruiter    objek Recruiter
+     * @return              boolean
      */
     public static boolean addRecruiter(Recruiter recruiter)
     {
@@ -60,7 +60,7 @@ public class DatabaseRecruiter
     
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param id    id recruiter
+     * @param  id   id recruiter
      * @return      boolean
      */
     public static boolean removeRecruiter(int id)
