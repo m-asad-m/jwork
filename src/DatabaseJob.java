@@ -34,7 +34,7 @@ public class DatabaseJob
      * @param  id   id job
      * @return      objek Job
      */
-    public static Job getJobById(int id)
+    public static Job getJobById(int id) throws JobNotFoundException
     {
         Job returnValue = null;
         for(Job job: JOB_DATABASE)
@@ -44,7 +44,14 @@ public class DatabaseJob
                 returnValue = job;
             }
         }
-        return returnValue;
+        if(returnValue == null)
+        {
+            throw new JobNotFoundException(id);
+        }
+        else
+        {
+            return returnValue;
+        }
     }
 
     /**
@@ -99,8 +106,14 @@ public class DatabaseJob
      * @param  id   id job
      * @return      boolean
      */
-    public static boolean removeJob(int id)
+    public static boolean removeJob(int id) throws JobNotFoundException
     {
-        return JOB_DATABASE.removeIf(job -> (job.getId() == id));
+        if(JOB_DATABASE.removeIf(job -> (job.getId() == id)))
+        {
+            return true;
+        }
+        else {
+            throw new JobNotFoundException(id);
+        }
     }
 }

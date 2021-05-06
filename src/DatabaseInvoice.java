@@ -88,11 +88,11 @@ public class DatabaseInvoice {
      * @param  invoiceStatus    objek status invoice
      * @return                  boolean
      */
-    public static boolean changeInvoice(int id, InvoiceStatus invoiceStatus)
+    public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus)
     {
         for(Invoice invoice: INVOICE_DATABASE)
         {
-            if(invoice.getId() == id)
+            if(invoice.getId() == id && invoice.getInvoiceStatus() == InvoiceStatus.OnGoing)
             {
                 invoice.setInvoiceStatus(invoiceStatus);
                 return true;

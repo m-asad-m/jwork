@@ -34,7 +34,7 @@ public class DatabaseRecruiter
      * @param  id   id recruiter
      * @return      objek recruiter
      */
-    public static Recruiter getRecruiterById(int id)
+    public static Recruiter getRecruiterById(int id) throws RecruiterNotFoundException
     {
         Recruiter returnValue = null;
         for(Recruiter recruiter: RECRUITER_DATABASE)
@@ -44,7 +44,14 @@ public class DatabaseRecruiter
                 returnValue = recruiter;
             }
         }
-        return returnValue;
+        if(returnValue == null)
+        {
+            throw new RecruiterNotFoundException(id);
+        }
+        else
+        {
+            return returnValue;
+        }
     }
 
     /**
@@ -63,8 +70,14 @@ public class DatabaseRecruiter
      * @param  id   id recruiter
      * @return      boolean
      */
-    public static boolean removeRecruiter(int id)
+    public static boolean removeRecruiter(int id) throws RecruiterNotFoundException
     {
-        return RECRUITER_DATABASE.removeIf(recruiter -> (recruiter.getId() == id));
+        if(RECRUITER_DATABASE.removeIf(recruiter -> (recruiter.getId() == id)))
+        {
+            return true;
+        }
+        else {
+            throw new RecruiterNotFoundException(id);
+        }
     }
 }

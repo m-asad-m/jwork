@@ -34,7 +34,7 @@ public class DatabaseBonus
      * @param   id  id bonus
      * @return      objek bonus
      */
-    public static Bonus getBonusById(int id)
+    public static Bonus getBonusById(int id) throws BonusNotFoundException
     {
         Bonus returnValue = null;
         for(Bonus bonus: BONUS_DATABASE)
@@ -44,7 +44,14 @@ public class DatabaseBonus
                 returnValue = bonus;
             }
         }
-        return returnValue;
+        if(returnValue == null)
+        {
+            throw new BonusNotFoundException(id);
+        }
+        else
+        {
+            return returnValue;
+        }
     }
 
     /**
@@ -70,13 +77,13 @@ public class DatabaseBonus
      * @param  bonus    objek bonus
      * @return          boolean
      */
-    public static boolean addBonus(Bonus bonus)
+    public static boolean addBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException
     {
         for(Bonus b: BONUS_DATABASE)
         {
             if(b.getReferralCode() == bonus.getReferralCode())
             {
-                return false;
+                throw new ReferralCodeAlreadyExistsException(b);
             }
         }
         lastId = bonus.getId();
@@ -123,8 +130,14 @@ public class DatabaseBonus
      * @param  id   id Bonus
      * @return      boolean
      */
-    public static boolean removeBonus(int id)
+    public static boolean removeBonus(int id) throws BonusNotFoundException
     {
-        return BONUS_DATABASE.removeIf(bonus -> (bonus.getId() == id));
+        if(BONUS_DATABASE.removeIf(bonus -> (bonus.getId() == id)))
+        {
+            return true;
+        }
+        else {
+            throw new BonusNotFoundException(id);
+        }
     }
 }

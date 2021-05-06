@@ -34,7 +34,7 @@ public class DatabaseJobseeker
      * @param  id   id Jobseeker
      * @return      objek Jobseeker
      */
-    public static Jobseeker getJobseekerById(int id)
+    public static Jobseeker getJobseekerById(int id) throws JobSeekerNotFoundException
     {
         Jobseeker returnValue = null;
         for(Jobseeker jobseeker: JOBSEEKER_DATABASE)
@@ -44,7 +44,14 @@ public class DatabaseJobseeker
                 returnValue = jobseeker;
             }
         }
-        return returnValue;
+        if(returnValue == null)
+        {
+            throw new JobSeekerNotFoundException(id);
+        }
+        else
+        {
+            return returnValue;
+        }
     }
 
     /**
@@ -52,13 +59,13 @@ public class DatabaseJobseeker
      * @param  jobseeker    objek Jobseeker
      * @return              boolean
      */
-    public static boolean addJobseeker(Jobseeker jobseeker)
+    public static boolean addJobseeker(Jobseeker jobseeker) throws EmailAlreadyExistsException
     {
         for(Jobseeker jobs: JOBSEEKER_DATABASE)
         {
             if(jobs.getEmail() == jobseeker.getEmail())
             {
-                return false;
+                throw new EmailAlreadyExistsException(jobs);
             }
         }
         lastId = jobseeker.getId();
@@ -70,8 +77,14 @@ public class DatabaseJobseeker
      * @param  id   id Jobseeker
      * @return      boolean
      */
-    public static boolean removeJobseeker(int id)
+    public static boolean removeJobseeker(int id) throws JobSeekerNotFoundException
     {
-        return JOBSEEKER_DATABASE.removeIf(jobseeker -> (jobseeker.getId() == id));
+        if(JOBSEEKER_DATABASE.removeIf(jobseeker -> (jobseeker.getId() == id)))
+        {
+            return true;
+        }
+        else {
+            throw new JobSeekerNotFoundException(id);
+        }
     }
 }
