@@ -31,8 +31,9 @@ public class DatabaseBonus
 
     /**
      * metode untuk mendapatkan list Bonus berdasarkan id
-     * @param   id  id bonus
-     * @return      objek bonus
+     * @param   id                      id bonus
+     * @return                          objek bonus
+     * @throws BonusNotFoundException   jika id tidak ditemukan dalam database bonus
      */
     public static Bonus getBonusById(int id) throws BonusNotFoundException
     {
@@ -74,8 +75,9 @@ public class DatabaseBonus
 
     /**
      * metode untuk menambahkan pekerjaan ke list
-     * @param  bonus    objek bonus
-     * @return          boolean
+     * @param  bonus                                objek bonus
+     * @return                                      boolean
+     * @throws ReferralCodeAlreadyExistsException   jika kode referral sudah terdapat pada database bonus
      */
     public static boolean addBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException
     {
@@ -127,8 +129,9 @@ public class DatabaseBonus
 
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param  id   id Bonus
-     * @return      boolean
+     * @param  id                       id Bonus
+     * @return                          boolean
+     * @throws BonusNotFoundException   jika id tidak ditemukan dalam database bonus
      */
     public static boolean removeBonus(int id) throws BonusNotFoundException
     {

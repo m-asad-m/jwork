@@ -31,8 +31,9 @@ public class DatabaseRecruiter
 
     /**
      * metode untuk mendapatkan list Recruiter berdasarkan id
-     * @param  id   id recruiter
-     * @return      objek recruiter
+     * @param  id                           id recruiter
+     * @return                              objek recruiter
+     * @throws RecruiterNotFoundException   jika id tidak ditemukan dalam database recruiter
      */
     public static Recruiter getRecruiterById(int id) throws RecruiterNotFoundException
     {
@@ -67,8 +68,9 @@ public class DatabaseRecruiter
     
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param  id   id recruiter
-     * @return      boolean
+     * @param  id                           id recruiter
+     * @return                              boolean
+     * @throws RecruiterNotFoundException   jika id tidak ditemukan dalam database recruiter
      */
     public static boolean removeRecruiter(int id) throws RecruiterNotFoundException
     {

@@ -31,8 +31,9 @@ public class DatabaseJob
 
     /**
      * metode untuk mendapatkan list Job berdasarkan id
-     * @param  id   id job
-     * @return      objek Job
+     * @param  id                   id job
+     * @return                      objek Job
+     * @throws JobNotFoundException jika id tidak ditemukan dalam database job
      */
     public static Job getJobById(int id) throws JobNotFoundException
     {
@@ -103,8 +104,9 @@ public class DatabaseJob
 
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param  id   id job
-     * @return      boolean
+     * @param  id                   id job
+     * @return                      boolean
+     * @throws JobNotFoundException jika id tidak ditemukan dalam database job
      */
     public static boolean removeJob(int id) throws JobNotFoundException
     {

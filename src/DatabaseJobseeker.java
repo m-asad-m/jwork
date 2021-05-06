@@ -31,8 +31,9 @@ public class DatabaseJobseeker
 
     /**
      * method untuk mendapatkan list Jobseeker berdasarkan id
-     * @param  id   id Jobseeker
-     * @return      objek Jobseeker
+     * @param  id                           id Jobseeker
+     * @return                              objek Jobseeker
+     * @throws JobSeekerNotFoundException   jika id tidak ditemukan dalam database jobseeker
      */
     public static Jobseeker getJobseekerById(int id) throws JobSeekerNotFoundException
     {
@@ -56,8 +57,9 @@ public class DatabaseJobseeker
 
     /**
      * metode untuk menambahkan pekerjaan ke list
-     * @param  jobseeker    objek Jobseeker
-     * @return              boolean
+     * @param  jobseeker                    objek Jobseeker
+     * @return                              boolean
+     * @throws EmailAlreadyExistsException  jika email jobseeker telah terdaftar
      */
     public static boolean addJobseeker(Jobseeker jobseeker) throws EmailAlreadyExistsException
     {
@@ -74,8 +76,9 @@ public class DatabaseJobseeker
 
     /**
      * metode untuk menghapus pekerjaan dari list
-     * @param  id   id Jobseeker
-     * @return      boolean
+     * @param  id                           id Jobseeker
+     * @return                              boolean
+     * @throws JobSeekerNotFoundException   jika id tidak ditemukan dalam database jobseeker
      */
     public static boolean removeJobseeker(int id) throws JobSeekerNotFoundException
     {
