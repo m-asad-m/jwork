@@ -66,16 +66,17 @@ public class DatabaseInvoice {
 
     /**
      * metode untuk menambahkan invoice ke list
-     * @param  invoice  objek invoice
-     * @return          boolean
+     * @param  invoice                              objek invoice
+     * @return                                      boolean
+     * @throws OngoingInvoiceAlreadyExistsException jika invoice telah berstatus OnGoing
      */
-    public static boolean addInvoice(Invoice invoice)
+    public static boolean addInvoice(Invoice invoice) throws OngoingInvoiceAlreadyExistsException
     {
         for(Invoice i: INVOICE_DATABASE)
         {
             if(i.getJobseeker() == invoice.getJobseeker() && i.getInvoiceStatus() == InvoiceStatus.OnGoing)
             {
-                return false;
+                throw new OngoingInvoiceAlreadyExistsException(i);
             }
         }
         lastId = invoice.getId();
@@ -103,11 +104,18 @@ public class DatabaseInvoice {
 
     /**
      * metode untuk menghapus invoice dari list
-     * @param  id   id invoice
-     * @return      boolean
+     * @param  id                       id invoice
+     * @return                          boolean
+     * @throws InvoiceNotFoundException jika id tidak ditemukan dalam database bonus
      */
-    public static boolean removeInvoice(int id)
+    public static boolean removeInvoice(int id) throws InvoiceNotFoundException
     {
-        return INVOICE_DATABASE.removeIf(invoice -> (invoice.getId() == id));
+        if(INVOICE_DATABASE.removeIf(invoice -> (invoice.getId() == id)))
+        {
+            return true;
+        }
+        else {
+            throw new InvoiceNotFoundException(id);
+        }
     }
 }
