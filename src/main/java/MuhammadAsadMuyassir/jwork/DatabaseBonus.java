@@ -67,7 +67,7 @@ public class DatabaseBonus
         Bonus returnValue = null;
         for(Bonus bonus: BONUS_DATABASE)
         {
-            if(bonus.getReferralCode() == referralCode)
+            if(bonus.getReferralCode().equals(referralCode))
             {
                 returnValue = bonus;
             }

@@ -92,4 +92,22 @@ public class DatabaseJobseeker
             throw new JobSeekerNotFoundException(id);
         }
     }
+
+    /**
+     * metode untuk menghapus pekerjaan dari list
+     * @param  email    email Jobseeker
+     * @param  password password Jobseeker
+     * @return          objek jobseeker
+     */
+    public static Jobseeker jobseekerLogin(String email, String password)
+    {
+        for(Jobseeker jobs: JOBSEEKER_DATABASE)
+        {
+            if(jobs.getEmail().equals(email) && jobs.getPassword().equals(password))
+            {
+                return jobs;
+            }
+        }
+        return null;
+    }
 }
