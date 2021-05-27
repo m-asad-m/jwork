@@ -39,22 +39,14 @@ public class DatabaseJobseeker
      */
     public static Jobseeker getJobseekerById(int id) throws JobSeekerNotFoundException
     {
-        Jobseeker returnValue = null;
         for(Jobseeker jobseeker: JOBSEEKER_DATABASE)
         {
             if(jobseeker.getId() == id)
             {
-                returnValue = jobseeker;
+                return jobseeker;
             }
         }
-        if(returnValue == null)
-        {
-            throw new JobSeekerNotFoundException(id);
-        }
-        else
-        {
-            return returnValue;
-        }
+        throw new JobSeekerNotFoundException(id);
     }
 
     /**
@@ -67,7 +59,7 @@ public class DatabaseJobseeker
     {
         for(Jobseeker jobs: JOBSEEKER_DATABASE)
         {
-            if(jobs.getEmail() == jobseeker.getEmail())
+            if(jobs.getEmail().equals(jobseeker.getEmail()))
             {
                 throw new EmailAlreadyExistsException(jobs);
             }

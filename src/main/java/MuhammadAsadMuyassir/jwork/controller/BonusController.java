@@ -15,7 +15,7 @@ public class BonusController {
     }
 
     @RequestMapping("/{referralCode}")
-    public Bonus getBonusById(@PathVariable String referralCode) {
+    public Bonus getBonusByReferralCode(@PathVariable String referralCode) {
         return DatabaseBonus.getBonusByReferralCode(referralCode);
     }
 

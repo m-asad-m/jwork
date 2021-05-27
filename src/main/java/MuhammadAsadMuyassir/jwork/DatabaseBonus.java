@@ -39,22 +39,14 @@ public class DatabaseBonus
      */
     public static Bonus getBonusById(int id) throws BonusNotFoundException
     {
-        Bonus returnValue = null;
         for(Bonus bonus: BONUS_DATABASE)
         {
             if(bonus.getId() == id)
             {
-                returnValue = bonus;
+                return bonus;
             }
         }
-        if(returnValue == null)
-        {
-            throw new BonusNotFoundException(id);
-        }
-        else
-        {
-            return returnValue;
-        }
+        throw new BonusNotFoundException(id);
     }
 
     /**
@@ -64,15 +56,14 @@ public class DatabaseBonus
      */
     public static Bonus getBonusByReferralCode(String referralCode)
     {
-        Bonus returnValue = null;
         for(Bonus bonus: BONUS_DATABASE)
         {
             if(bonus.getReferralCode().equals(referralCode))
             {
-                returnValue = bonus;
+                return bonus;
             }
         }
-        return returnValue;
+        return null;
     }
 
     /**
@@ -85,7 +76,7 @@ public class DatabaseBonus
     {
         for(Bonus b: BONUS_DATABASE)
         {
-            if(b.getReferralCode() == bonus.getReferralCode())
+            if(b.getReferralCode().equals(bonus.getReferralCode()))
             {
                 throw new ReferralCodeAlreadyExistsException(b);
             }

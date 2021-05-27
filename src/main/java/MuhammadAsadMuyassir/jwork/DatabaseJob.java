@@ -39,22 +39,14 @@ public class DatabaseJob
      */
     public static Job getJobById(int id) throws JobNotFoundException
     {
-        Job returnValue = null;
         for(Job job: JOB_DATABASE)
         {
             if(job.getId() == id)
             {
-                returnValue = job;
+                return job;
             }
         }
-        if(returnValue == null)
-        {
-            throw new JobNotFoundException(id);
-        }
-        else
-        {
-            return returnValue;
-        }
+        throw new JobNotFoundException(id);
     }
 
     /**

@@ -18,7 +18,12 @@ public class InvoiceController {
     public Invoice getInvoiceById(@PathVariable int id)
     {
         Invoice invoice = null;
-        invoice = DatabaseInvoice.getInvoiceById(id);
+        try {
+            invoice = DatabaseInvoice.getInvoiceById(id);
+        } catch (InvoiceNotFoundException e) {
+            e.getMessage();
+            return null;
+        }
         return invoice;
     }
 
@@ -30,19 +35,23 @@ public class InvoiceController {
 
     @RequestMapping(value = "/invoiceStatus/{id}", method = RequestMethod.PUT)
     public Invoice changeInvoiceStatus(@PathVariable int id,
-                                       @RequestParam(value="name") InvoiceStatus status)
+                                       @RequestParam(value="status") InvoiceStatus status)
     {
         Invoice invoice = null;
-        DatabaseInvoice.getInvoiceById(id).setInvoiceStatus(status);
-        invoice = DatabaseInvoice.getInvoiceById(id);
-
+        try {
+            invoice = DatabaseInvoice.getInvoiceById(id);
+        } catch (InvoiceNotFoundException e) {
+            e.getMessage();
+            return null;
+        }
+        invoice.setInvoiceStatus(status);
         return invoice;
     }
 
-    @RequestMapping(value = "/invoice/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Boolean removeInvoice(@PathVariable int id)
     {
-        try{
+        try {
             return DatabaseInvoice.removeInvoice(id);
         } catch (InvoiceNotFoundException e) {
             e.getMessage();
@@ -53,15 +62,14 @@ public class InvoiceController {
     @RequestMapping(value = "/createBankPayment", method = RequestMethod.POST)
     public Invoice addBankPayment(@RequestParam(value="jobIdList") ArrayList<Integer> jobIdList,
                                   @RequestParam(value="jobseekerId") int jobseekerId,
-                                  @RequestParam(value = "adminFee") int adminFee)
+                                  @RequestParam(value="adminFee", defaultValue="0") int adminFee)
     {
         BankPayment bank = null;
-        ArrayList<Job> jobAL =  new ArrayList<Job>();
-        for(int id : jobIdList)
+        ArrayList<Job> job = new ArrayList<Job>();
+        for(int id: jobIdList)
         {
             try {
-                Job job = DatabaseJob.getJobById(id);
-                jobAL.add(job);
+                job.add(DatabaseJob.getJobById(id));
             } catch (JobNotFoundException e) {
                 e.getMessage();
                 continue;
@@ -69,35 +77,31 @@ public class InvoiceController {
         }
 
         try {
-            bank = new BankPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobseeker.getJobseekerById(jobseekerId), adminFee);
+            bank = new BankPayment(DatabaseInvoice.getLastId()+1, job, DatabaseJobseeker.getJobseekerById(jobseekerId), adminFee);
+            bank.setTotalFee();
+            DatabaseInvoice.addInvoice(bank);
         } catch (JobSeekerNotFoundException e) {
             e.getMessage();
             return null;
-        }
-
-        try {
-            DatabaseInvoice.addInvoice(bank);
         } catch (OngoingInvoiceAlreadyExistsException e) {
             e.getMessage();
             return null;
         }
 
-        bank.setTotalFee();
         return bank;
     }
 
     @RequestMapping(value = "/createEWalletPayment", method = RequestMethod.POST)
     public Invoice addEWalletPayment(@RequestParam(value="jobIdList") ArrayList<Integer> jobIdList,
                                      @RequestParam(value="jobseekerId") int jobseekerId,
-                                     @RequestParam(value = "adminFee") Bonus referralCode)
+                                     @RequestParam(value = "bonus", defaultValue="") String referralCode)
     {
         EwalletPayment eWallet = null;
-        ArrayList<Job> jobAL =  new ArrayList<Job>();
-        for(int id : jobIdList)
+        ArrayList<Job> job = new ArrayList<Job>();
+        for(int id: jobIdList)
         {
             try {
-                Job job = DatabaseJob.getJobById(id);
-                jobAL.add(job);
+                job.add(DatabaseJob.getJobById(id));
             } catch (JobNotFoundException e) {
                 e.getMessage();
                 continue;
@@ -105,21 +109,17 @@ public class InvoiceController {
         }
 
         try {
-            eWallet = new EwalletPayment(DatabaseInvoice.getLastId()+1, jobAL, DatabaseJobseeker.getJobseekerById(jobseekerId), referralCode);
+            eWallet = new EwalletPayment(DatabaseInvoice.getLastId()+1, job, DatabaseJobseeker.getJobseekerById(jobseekerId), DatabaseBonus.getBonusByReferralCode(referralCode));
+            eWallet.setTotalFee();
+            DatabaseInvoice.addInvoice(eWallet);
         } catch (JobSeekerNotFoundException e) {
             e.getMessage();
             return null;
-        }
-
-        try {
-            DatabaseInvoice.addInvoice(eWallet);
         } catch (OngoingInvoiceAlreadyExistsException e) {
             e.getMessage();
             return null;
         }
 
-        eWallet.setTotalFee();
         return eWallet;
     }
-
 }

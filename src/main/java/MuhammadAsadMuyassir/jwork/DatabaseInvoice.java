@@ -35,17 +35,16 @@ public class DatabaseInvoice {
      * @param  id   id invoice
      * @return      objek invoice
      */
-    public static Invoice getInvoiceById(int id)
+    public static Invoice getInvoiceById(int id) throws InvoiceNotFoundException
     {
-        Invoice returnValue = null;
         for(Invoice invoice: INVOICE_DATABASE)
         {
             if(invoice.getId() == id)
             {
-                returnValue = invoice;
+                return invoice;
             }
         }
-        return returnValue;
+        throw new InvoiceNotFoundException(id);
     }
 
     /**

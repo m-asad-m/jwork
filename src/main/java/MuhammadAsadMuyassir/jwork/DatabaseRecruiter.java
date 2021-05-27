@@ -39,22 +39,14 @@ public class DatabaseRecruiter
      */
     public static Recruiter getRecruiterById(int id) throws RecruiterNotFoundException
     {
-        Recruiter returnValue = null;
         for(Recruiter recruiter: RECRUITER_DATABASE)
         {
             if(recruiter.getId() == id)
             {
-                returnValue = recruiter;
+                return recruiter;
             }
         }
-        if(returnValue == null)
-        {
-            throw new RecruiterNotFoundException(id);
-        }
-        else
-        {
-            return returnValue;
-        }
+        throw new RecruiterNotFoundException(id);
     }
 
     /**
