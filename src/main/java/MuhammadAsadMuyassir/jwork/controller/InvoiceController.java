@@ -50,7 +50,7 @@ public class InvoiceController {
      * @param jobseekerId   id jobseeker
      * @return              array list invoice
      */
-    @RequestMapping("/jobseeker/{JobseekerId}")
+    @RequestMapping("/jobseeker/{jobseekerId}")
     public ArrayList<Invoice> getInvoiceByJobseeker(@PathVariable int jobseekerId)
     {
         return DatabaseInvoicePostgre.getInvoiceByJobseeker(jobseekerId);
